@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Haikunator</id>
+    <version>1.0.0</version>
+    <authors>Atrox</authors>
+    <owners>Atrox</owners>
+    <licenseUrl>http://opensource.org/licenses/gpl-3.0.html</licenseUrl>
+    <projectUrl>https://github.com/Atrox/haikunator.net</projectUrl>
+    <iconUrl>https://avatars0.githubusercontent.com/u/1037067</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Generate Heroku-like random names to use in your applications</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2015 Atrox</copyright>
+    <tags>haikunator heroku random name generator haiku heroku-like</tags>
+  </metadata>
+</package>
