@@ -39,6 +39,14 @@ namespace Haikunator
             "penguin", "kiwi", "cake", "mouse", "rice", "coke", "hola", "salad", "hat"
         };
 
+        /// <summary>
+        /// Generate Heroku-like random names
+        /// </summary>
+        /// <param name="delimiter">Delimiter</param>
+        /// <param name="tokenLength">Token Length</param>
+        /// <param name="tokenHex">Token Hex (true/false)</param>
+        /// <param name="tokenChars">Token Chars</param>
+        /// <returns>Heroku-like string</returns>
         public static string haikunate(string delimiter = "-", int tokenLength = 4, bool tokenHex = false, string tokenChars = "0123456789")
         {
             string token = "";
