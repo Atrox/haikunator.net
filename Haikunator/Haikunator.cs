@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Haikunator
 {
     public class Haikunator
     {
-        static Random rnd = new Random();
-        static string[] ADJECTIVES = {
+        private static readonly Random Rnd = new Random();
+        private static readonly string[] Adjectives =
+        {
             "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark",
             "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter",
             "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue",
@@ -23,7 +21,8 @@ namespace Haikunator
             "steep", "flat", "square", "round", "mute", "noisy", "hushy", "raspy", "soft",
             "shrill", "rapid", "sweet", "curly", "calm", "jolly", "fancy", "plain", "shinny"
         };
-        static string[] NOUNS = {
+        private static readonly string[] Nouns =
+        {
             "waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning",
             "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter",
             "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook",
@@ -40,29 +39,29 @@ namespace Haikunator
         };
 
         /// <summary>
-        /// Generate Heroku-like random names
+        ///     Generate Heroku-like random names
         /// </summary>
         /// <param name="delimiter">Delimiter</param>
         /// <param name="tokenLength">Token Length</param>
         /// <param name="tokenHex">Token Hex (true/false)</param>
         /// <param name="tokenChars">Token Chars</param>
         /// <returns>Heroku-like string</returns>
-        public static string haikunate(string delimiter = "-", int tokenLength = 4, bool tokenHex = false, string tokenChars = "0123456789")
+        public static string Haikunate(string delimiter = "-", int tokenLength = 4, bool tokenHex = false,
+            string tokenChars = "0123456789")
         {
-            string token = "";
-
             if (tokenHex) tokenChars = "0123456789abcdef";
 
-            string adjective = ADJECTIVES[rnd.Next(ADJECTIVES.Length)];
-            string noun = NOUNS[rnd.Next(NOUNS.Length)];
+            var adjective = Adjectives[Rnd.Next(Adjectives.Length)];
+            var noun = Nouns[Rnd.Next(Nouns.Length)];
+            var token = "";
 
-            for(int i = 0; i < tokenLength; i++)
+            for (var i = 0; i < tokenLength; i++)
             {
-                token += tokenChars[rnd.Next(tokenChars.Length)];
+                token += tokenChars[Rnd.Next(tokenChars.Length)];
             }
 
-            string[] sections = { adjective, noun, token };
-            return string.Join(delimiter, sections.Where(s => !String.IsNullOrEmpty(s)));
+            string[] sections = {adjective, noun, token};
+            return string.Join(delimiter, sections.Where(s => !string.IsNullOrEmpty(s)));
         }
     }
 }
