@@ -49,7 +49,7 @@ haikunator.Haikunate(tokenLength: 0, delimiter: "") // => "billowingleaf"
 The following options are available:
 
 ```cs
-var haikunator = new Haikunator();
+var haikunator = new Atrox.Haikunator();
 
 haikunator.Adjectives = new[] {"set", "custom", "adjectives"};
 haikunator.Nouns = new[] {"set", "custom", "nouns"};
@@ -78,7 +78,8 @@ Haikunator is also available in other languages. Check them out:
 
 - Python: https://github.com/Atrox/haikunatorpy
 - Node: https://github.com/Atrox/haikunatorjs
-- PHP: https://github.com/Atrox/haikunator.net
+- PHP: https://github.com/Atrox/haikunatorphp
+- Java: https://github.com/Atrox/haikunatorjava
 - Dart: https://github.com/Atrox/haikunatordart
 - Ruby: https://github.com/usmanbashir/haikunator
 - Go: https://github.com/yelinaung/go-haikunator
