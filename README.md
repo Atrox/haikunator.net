@@ -17,7 +17,7 @@ PM> Install-Package Haikunator
 Haikunator is pretty simple.
 
 ```cs
-var haikunator = new Haikunator();
+var haikunator = new Atrox.Haikunator();
 
 // default usage
 haikunator.Haikunate() // => "wispy-dust-1337"
