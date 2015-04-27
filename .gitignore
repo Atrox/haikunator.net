@@ -189,3 +189,5 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 *.nupkg
+*.dll.CodeAnalysisLog.xml
+*.dll.lastcodeanalysissucceeded

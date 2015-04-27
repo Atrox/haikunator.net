@@ -17,29 +17,31 @@ PM> Install-Package Haikunator
 Haikunator is pretty simple.
 
 ```cs
+var haikunator = new Haikunator();
+
 // default usage
-Haikunator.Haikunator.Haikunate() // => "wispy-dust-1337"
+haikunator.Haikunate() // => "wispy-dust-1337"
 
 // custom length (default=4)
-Haikunator.Haikunator.Haikunate(tokenLength: 6) // => "patient-king-887265"
+haikunator.Haikunate(tokenLength: 6) // => "patient-king-887265"
 
 // use hex instead of numbers
-Haikunator.Haikunator.Haikunate(tokenHex: true) // => "purple-breeze-98e1"
+haikunator.Haikunate(tokenHex: true) // => "purple-breeze-98e1"
 
 // use custom chars instead of numbers/hex
-Haikunator.Haikunator.Haikunate(tokenChars: "HAIKUNATE") // => "summer-atom-IHEA"
+haikunator.Haikunate(tokenChars: "HAIKUNATE") // => "summer-atom-IHEA"
 
 // don't include a token
-Haikunator.Haikunator.Haikunate(tokenLength: 0) // => "cold-wildflower"
+haikunator.Haikunate(tokenLength: 0) // => "cold-wildflower"
 
 // use a different delimiter
-Haikunator.Haikunator.Haikunate(delimiter: ".") // => "restless.sea.7976"
+haikunator.Haikunate(delimiter: ".") // => "restless.sea.7976"
 
 // no token, space delimiter
-Haikunator.Haikunator.Haikunate(tokenLength: 0, delimiter: " ") // => "delicate haze"
+haikunator.Haikunate(tokenLength: 0, delimiter: " ") // => "delicate haze"
 
 // no token, empty delimiter
-Haikunator.Haikunator.Haikunate(tokenLength: 0, delimiter: "") // => "billowingleaf"
+haikunator.Haikunate(tokenLength: 0, delimiter: "") // => "billowingleaf"
 ```
 
 ## Options
@@ -47,7 +49,12 @@ Haikunator.Haikunator.Haikunate(tokenLength: 0, delimiter: "") // => "billowingl
 The following options are available:
 
 ```cs
-Haikunator.Haikunator.Haikunate(
+var haikunator = new Haikunator();
+
+haikunator.Adjectives = new[] {"set", "custom", "adjectives"};
+haikunator.Nouns = new[] {"set", "custom", "nouns"};
+
+haikunator.Haikunate(
   delimiter: "-",
   tokenLength: 4,
   tokenHex: false,

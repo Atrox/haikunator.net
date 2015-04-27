@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 
-namespace Haikunator
+namespace Atrox
 {
     public class Haikunator
     {
-        private static readonly Random Rnd = new Random();
-        private static readonly string[] Adjectives =
+        private readonly Random _rnd = new Random();
+        public string[] Adjectives =
         {
             "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark",
             "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter",
@@ -21,7 +21,7 @@ namespace Haikunator
             "steep", "flat", "square", "round", "mute", "noisy", "hushy", "raspy", "soft",
             "shrill", "rapid", "sweet", "curly", "calm", "jolly", "fancy", "plain", "shinny"
         };
-        private static readonly string[] Nouns =
+        public string[] Nouns =
         {
             "waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning",
             "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter",
@@ -46,18 +46,18 @@ namespace Haikunator
         /// <param name="tokenHex">Token Hex (true/false)</param>
         /// <param name="tokenChars">Token Chars</param>
         /// <returns>Heroku-like string</returns>
-        public static string Haikunate(string delimiter = "-", int tokenLength = 4, bool tokenHex = false,
+        public string Haikunate(string delimiter = "-", int tokenLength = 4, bool tokenHex = false,
             string tokenChars = "0123456789")
         {
             if (tokenHex) tokenChars = "0123456789abcdef";
-
-            var adjective = Adjectives[Rnd.Next(Adjectives.Length)];
-            var noun = Nouns[Rnd.Next(Nouns.Length)];
+            
+            var adjective = Adjectives[_rnd.Next(Adjectives.Length)];
+            var noun = Nouns[_rnd.Next(Nouns.Length)];
             var token = "";
 
             for (var i = 0; i < tokenLength; i++)
             {
-                token += tokenChars[Rnd.Next(tokenChars.Length)];
+                token += tokenChars[_rnd.Next(tokenChars.Length)];
             }
 
             string[] sections = {adjective, noun, token};

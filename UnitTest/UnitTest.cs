@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Atrox;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTest
@@ -9,72 +10,78 @@ namespace UnitTest
         [TestMethod]
         public void TestDefaultUse()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate();
-            StringAssert.Matches(haikunate, new Regex(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{4})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(), new Regex(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{4})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void TestHexUse()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(tokenHex: true);
-            StringAssert.Matches(haikunate, new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{4})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(tokenHex: true), new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{4})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void Test9DigitsUse()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(tokenLength: 9);
-            StringAssert.Matches(haikunate, new Regex(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{9})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(tokenLength: 9), new Regex(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{9})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void Test9DigitsAsHexUse()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(tokenLength: 9, tokenHex: true);
-            StringAssert.Matches(haikunate, new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{9})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(tokenLength: 9, tokenHex: true), new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{9})$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void TestWontReturnSameForSubsequentCalls()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate();
-            var haikunate2 = Haikunator.Haikunator.Haikunate();
-            Equals(haikunate, haikunate2);
+            var haikunator = new Haikunator();
+            Equals(haikunator.Haikunate(), haikunator.Haikunate());
         }
 
         [TestMethod]
         public void TestDropsToken()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(tokenLength: 0);
-            StringAssert.Matches(haikunate, new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(tokenLength: 0), new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void TestPermitsOptionalDelimiter()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(delimiter: ".");
-            StringAssert.Matches(haikunate, new Regex(@"((?:[a-z][a-z]+))(\.)((?:[a-z][a-z]+))(\.)(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(delimiter: "."), new Regex(@"((?:[a-z][a-z]+))(\.)((?:[a-z][a-z]+))(\.)(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void TestSpaceDelimiterAndNoToken()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(delimiter: " ", tokenLength: 0);
-            StringAssert.Matches(haikunate, new Regex("((?:[a-z][a-z]+))( )((?:[a-z][a-z]+))$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(delimiter: " ", tokenLength: 0), new Regex("((?:[a-z][a-z]+))( )((?:[a-z][a-z]+))$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void TestOneSingleWord()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(delimiter: "", tokenLength: 0);
-            StringAssert.Matches(haikunate, new Regex("((?:[a-z][a-z]+))$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(delimiter: "", tokenLength: 0), new Regex("((?:[a-z][a-z]+))$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
 
         [TestMethod]
         public void TestCustomChars()
         {
-            var haikunate = Haikunator.Haikunator.Haikunate(tokenChars: "A");
-            StringAssert.Matches(haikunate, new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(AAAA)$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+            var haikunator = new Haikunator();
+            StringAssert.Matches(haikunator.Haikunate(tokenChars: "A"), new Regex("((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(AAAA)$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
+        }
+
+        [TestMethod]
+        public void TestCustomWords()
+        {
+            var haikunator = new Haikunator { Adjectives = new[] {"haiku"}, Nouns = new [] {"nator"}};
+            StringAssert.Matches(haikunator.Haikunate(tokenLength: 0), new Regex("(haiku)(-)(nator)$", RegexOptions.IgnoreCase | RegexOptions.Singleline));
         }
     }
 }
