@@ -6,8 +6,7 @@ namespace Atrox
     public class Haikunator
     {
         private readonly Random _rnd = new Random();
-        public string[] Adjectives =
-        {
+        public string[] Adjectives = {
             "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark",
             "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter",
             "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue",
@@ -21,8 +20,7 @@ namespace Atrox
             "steep", "flat", "square", "round", "mute", "noisy", "hushy", "raspy", "soft",
             "shrill", "rapid", "sweet", "curly", "calm", "jolly", "fancy", "plain", "shinny"
         };
-        public string[] Nouns =
-        {
+        public string[] Nouns = {
             "waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning",
             "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter",
             "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook",
@@ -60,7 +58,7 @@ namespace Atrox
                 token += tokenChars[_rnd.Next(tokenChars.Length)];
             }
 
-            string[] sections = {adjective, noun, token};
+            string[] sections = { adjective, noun, token };
             return string.Join(delimiter, sections.Where(s => !string.IsNullOrEmpty(s)));
         }
     }
