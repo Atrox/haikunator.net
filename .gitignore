@@ -191,3 +191,4 @@ ModelManifest.xml
 *.nupkg
 *.dll.CodeAnalysisLog.xml
 *.dll.lastcodeanalysissucceeded
+*.dll.mdb
