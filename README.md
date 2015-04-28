@@ -1,8 +1,10 @@
 # Haikunator.NET
 
+[![Latest Version](https://img.shields.io/nuget/v/Haikunator.svg?style=flat-square)](https://www.nuget.org/packages/Haikunator)
 [![Build Status - Windows](https://img.shields.io/appveyor/ci/Atrox/haikunator-net.svg?style=flat-square&label=windows)](https://ci.appveyor.com/project/Atrox/haikunator-net)
 [![Build Status - Linux](https://img.shields.io/travis/Atrox/haikunator.net.svg?style=flat-square&label=linux)](https://travis-ci.org/Atrox/haikunator.net)
-[![Latest Version](https://img.shields.io/nuget/v/Haikunator.svg?style=flat-square)](https://www.nuget.org/packages/Haikunator)
+[![Code Quality](https://img.shields.io/coverity/scan/4972.svg?style=flat-square)](https://scan.coverity.com/projects/4972)
+
 
 Generate Heroku-like random names to use in your .NET applications.
 
