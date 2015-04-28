@@ -3,4 +3,3 @@ install:
 
 build:
   project: Haikunator.sln
-  verbosity: detailed

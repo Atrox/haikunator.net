@@ -192,3 +192,4 @@ ModelManifest.xml
 *.dll.CodeAnalysisLog.xml
 *.dll.lastcodeanalysissucceeded
 *.dll.mdb
+*.userprefs

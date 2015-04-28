@@ -1,8 +1,16 @@
 language: csharp
 solution: Haikunator.sln
+
+mono:
+  - latest
+  - 3.12.0
+  - 3.10.0
+  - 3.8.0
+
 install:
   - nuget restore Haikunator.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+
 script:
   - xbuild /p:Configuration=Release Haikunator.sln
   - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./Haikunator.Tests/bin/Release/Haikunator.Tests.dll
