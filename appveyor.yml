@@ -1,0 +1,6 @@
+install:
+    - nuget restore
+
+build:
+  project: Haikunator.sln
+  verbosity: detailed
