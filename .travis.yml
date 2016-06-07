@@ -12,4 +12,4 @@ install:
 
 script:
   - xbuild /p:Configuration=Release Haikunator.sln
-  - mono ./testrunner/NUnit.ConsoleRunner.3.2.1/tools/nunit-console.exe ./Haikunator.Tests/bin/Release/Haikunator.Tests.dll
+  - mono ./testrunner/NUnit.ConsoleRunner.3.2.1/tools/nunit3-console.exe ./Haikunator.Tests/bin/Release/Haikunator.Tests.dll
