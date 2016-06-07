@@ -56,6 +56,7 @@ The following options are available:
 
 ```cs
 var haikunator = new Atrox.Haikunator();
+// var haikunator = new Atrox.Haikunator(1234); // seed
 
 haikunator.Adjectives = new[] {"set", "custom", "adjectives"};
 haikunator.Nouns = new[] {"set", "custom", "nouns"};

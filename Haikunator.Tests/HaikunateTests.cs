@@ -2,85 +2,121 @@
 
 namespace Haikunator.Tests
 {
-	[TestFixture]
-	public class HaikunateTests
-	{
-		private Atrox.Haikunator haikunator;
+    [TestFixture]
+    public class HaikunateTests
+    {
+        [SetUp]
+        public void SetUp()
+        {
+            _haikunator = new Atrox.Haikunator();
+        }
 
-		[SetUp]
-		public void SetUp()
-		{
-			haikunator = new Atrox.Haikunator();
-		}
+        private Atrox.Haikunator _haikunator;
 
-		[Test]
-		public void TestDefaultUse()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{4})$", haikunator.Haikunate());
-		}
+        [Test]
+        public void Test9DigitsAsHexUse()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{9})$",
+                _haikunator.Haikunate(tokenLength: 9, tokenHex: true));
+        }
 
-		[Test]
-		public void TestHexUse()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{4})$", haikunator.Haikunate(tokenHex: true));
-		}
+        [Test]
+        public void Test9DigitsUse()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{9})$",
+                _haikunator.Haikunate(tokenLength: 9));
+        }
 
-		[Test]
-		public void Test9DigitsUse()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{9})$", haikunator.Haikunate(tokenLength: 9));
-		}
+        [Test]
+        public void TestCustomAdjectivesAndNouns()
+        {
+            var haikunator = new Atrox.Haikunator
+            {
+                Adjectives = new[] {"red"},
+                Nouns = new[] {"reindeer"}
+            };
 
-		[Test]
-		public void Test9DigitsAsHexUse()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{9})$", haikunator.Haikunate(tokenLength: 9, tokenHex: true));
-		}
+            StringAssert.IsMatch(@"(red)(-)(reindeer)(-)(\d{4})$", haikunator.Haikunate());
+        }
 
-		[Test]
-		public void TestWontReturnSameForSubsequentCalls()
-		{
-			Assert.AreNotEqual(haikunator.Haikunate(), haikunator.Haikunate());
-		}
+        [Test]
+        public void TestCustomChars()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(AAAA)$",
+                _haikunator.Haikunate(tokenChars: "A"));
+        }
 
-		[Test]
-		public void TestDropsToken()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))$", haikunator.Haikunate(tokenLength: 0));
-		}
+        [Test]
+        public void TestCustomRandom()
+        {
+            var haikunator1 = new Atrox.Haikunator(1234);
+            var haikunator2 = new Atrox.Haikunator(1234);
 
-		[Test]
-		public void TestPermitsOptionalDelimiter()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))(\.)((?:[a-z][a-z]+))(\.)(\d+)$", haikunator.Haikunate(delimiter: "."));
-		}
+            Assert.AreEqual(haikunator1.Haikunate(), haikunator2.Haikunate());
+        }
 
-		[Test]
-		public void TestSpaceDelimiterAndNoToken()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))( )((?:[a-z][a-z]+))$", haikunator.Haikunate(delimiter: " ", tokenLength: 0));
-		}
+        [Test]
+        public void TestCustomWords()
+        {
+            _haikunator.Adjectives = new[] {"haiku"};
+            _haikunator.Nouns = new[] {"nator"};
 
-		[Test]
-		public void TestOneSingleWord()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))$", haikunator.Haikunate(delimiter: "", tokenLength: 0));
-		}
+            StringAssert.IsMatch(@"(haiku)(-)(nator)$", _haikunator.Haikunate(tokenLength: 0));
+        }
 
-		[Test]
-		public void TestCustomChars()
-		{
-			StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(AAAA)$", haikunator.Haikunate(tokenChars: "A"));
-		}
+        [Test]
+        public void TestDefaultUse()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(\d{4})$", _haikunator.Haikunate());
+        }
 
-		[Test]
-		public void TestCustomWords()
-		{
-			haikunator.Adjectives = new[] { "haiku" };
-			haikunator.Nouns = new[] { "nator" };
+        [Test]
+        public void TestDropsToken()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))$", _haikunator.Haikunate(tokenLength: 0));
+        }
 
-			StringAssert.IsMatch(@"(haiku)(-)(nator)$", haikunator.Haikunate(tokenLength: 0));
-		}
-	}
+        [Test]
+        public void TestHexUse()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))(-)((?:[a-z][a-z]+))(-)(.{4})$",
+                _haikunator.Haikunate(tokenHex: true));
+        }
+
+        [Test]
+        public void TestOneSingleWord()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))$", _haikunator.Haikunate("", 0));
+        }
+
+        [Test]
+        public void TestPermitsOptionalDelimiter()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))(\.)((?:[a-z][a-z]+))(\.)(\d+)$", _haikunator.Haikunate("."));
+        }
+
+        [Test]
+        public void TestRemoveAdjectivesAndNouns()
+        {
+            var haikunator = new Atrox.Haikunator
+            {
+                Adjectives = new string[0],
+                Nouns = new string[0]
+            };
+
+            StringAssert.IsMatch(@"(\d{4})$", haikunator.Haikunate());
+        }
+
+        [Test]
+        public void TestSpaceDelimiterAndNoToken()
+        {
+            StringAssert.IsMatch(@"((?:[a-z][a-z]+))( )((?:[a-z][a-z]+))$", _haikunator.Haikunate(" ", 0));
+        }
+
+        [Test]
+        public void TestWontReturnSameForSubsequentCalls()
+        {
+            Assert.AreNotEqual(_haikunator.Haikunate(), _haikunator.Haikunate());
+        }
+    }
 }
-
