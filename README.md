@@ -1,16 +1,14 @@
 # Haikunator.NET
 
+[![Build Status](https://img.shields.io/travis/Atrox/haikunator.net.svg?style=flat-square)](https://travis-ci.org/Atrox/haikunator.net)
 [![Latest Version](https://img.shields.io/nuget/v/Haikunator.svg?style=flat-square)](https://www.nuget.org/packages/Haikunator)
-[![Build Status - Windows](https://img.shields.io/appveyor/ci/Atrox/haikunator-net.svg?style=flat-square&label=windows)](https://ci.appveyor.com/project/Atrox/haikunator-net)
-[![Build Status - Linux](https://img.shields.io/travis/Atrox/haikunator.net.svg?style=flat-square&label=linux)](https://travis-ci.org/Atrox/haikunator.net)
 
 Generate Heroku-like random names to use in your .NET applications.
 
 ## Installation
 
-To install Haikunator, run the following command in the [Package Manager Console](http://docs.nuget.org/consume/package-manager-console)
 ```
-PM> Install-Package Haikunator
+dotnet add package Haikunator
 ```
 
 ## Usage
@@ -18,7 +16,7 @@ PM> Install-Package Haikunator
 Haikunator is pretty simple.
 
 ```cs
-var haikunator = new Atrox.Haikunator();
+var haikunator = new Haikunator();
 
 // default usage
 haikunator.Haikunate() // => "wispy-dust-1337"
@@ -55,8 +53,8 @@ haikunator.Haikunate() // => "green-cow-5426"
 The following options are available:
 
 ```cs
-var haikunator = new Atrox.Haikunator();
-// var haikunator = new Atrox.Haikunator(1234); // seed
+var haikunator = new Haikunator();
+// var haikunator = new Haikunator(1234); // seed
 
 haikunator.Adjectives = new[] {"set", "custom", "adjectives"};
 haikunator.Nouns = new[] {"set", "custom", "nouns"};

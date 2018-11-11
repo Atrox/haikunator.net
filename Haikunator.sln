@@ -1,26 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haikunator", "Haikunator\Haikunator.csproj", "{7D2331AE-61A5-49D9-9A8F-A963AAA0E987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haikunator", "Haikunator\Haikunator.csproj", "{AB442F53-5426-4D0E-84E0-1F00201E928B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haikunator.Tests", "Haikunator.Tests\Haikunator.Tests.csproj", "{0B1A9D21-9FB3-44EA-B5E6-2063FB265DEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haikunator.Tests", "Haikunator.Tests\Haikunator.Tests.csproj", "{55C476AD-15AA-4A71-9491-1BF39EE609CC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{80809C5E-1703-4DE3-A0D1-A4B83E04B854}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{19447659-A0BB-47EE-9EAA-8499E1B70769}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{780403B2-8F97-4FCB-AAA6-A4225350031C}"
 	ProjectSection(SolutionItems) = preProject
 		.travis.yml = .travis.yml
-		appveyor.yml = appveyor.yml
 		LICENSE = LICENSE
-		Package.nuspec = Package.nuspec
-		.nuget\packages.config = .nuget\packages.config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -30,16 +20,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D2331AE-61A5-49D9-9A8F-A963AAA0E987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D2331AE-61A5-49D9-9A8F-A963AAA0E987}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D2331AE-61A5-49D9-9A8F-A963AAA0E987}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D2331AE-61A5-49D9-9A8F-A963AAA0E987}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B1A9D21-9FB3-44EA-B5E6-2063FB265DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B1A9D21-9FB3-44EA-B5E6-2063FB265DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B1A9D21-9FB3-44EA-B5E6-2063FB265DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B1A9D21-9FB3-44EA-B5E6-2063FB265DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB442F53-5426-4D0E-84E0-1F00201E928B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB442F53-5426-4D0E-84E0-1F00201E928B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB442F53-5426-4D0E-84E0-1F00201E928B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB442F53-5426-4D0E-84E0-1F00201E928B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55C476AD-15AA-4A71-9491-1BF39EE609CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C476AD-15AA-4A71-9491-1BF39EE609CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C476AD-15AA-4A71-9491-1BF39EE609CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C476AD-15AA-4A71-9491-1BF39EE609CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65499E32-3852-4CCC-82C8-905F80A3CC20}
 	EndGlobalSection
 EndGlobal
