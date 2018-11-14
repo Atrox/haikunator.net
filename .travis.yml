@@ -8,4 +8,4 @@ install:
 
 script:
   - dotnet test ./Haikunator.Tests/ /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-  - csmacnz.Coveralls --opencover -i ./Haikunator.Tests/coverage.opencover.xml
+  - ~/.dotnet/tools/csmacnz.Coveralls --opencover -i ./Haikunator.Tests/coverage.opencover.xml
